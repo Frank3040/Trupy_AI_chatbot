@@ -1,1 +1,1 @@
-# vizzyplot
+# Trupy AI
