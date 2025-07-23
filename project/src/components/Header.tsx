@@ -1,5 +1,7 @@
 import React from 'react';
 import { Info } from 'lucide-react';
+import logo from '../img/Trupy_1_preview_rev_1.png';
+
 
 const Header: React.FC = () => {
   return (
@@ -7,7 +9,11 @@ const Header: React.FC = () => {
       <div className="w-10 h-10 flex items-center justify-center">
         {/* Placeholder for SVG logo */}
         <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center">
-        <img src="project\src\img\Trupy_1_preview_rev_1.png" alt="Trupy Logo" className="w-5 h-5 object-contain" />
+        <img
+  src={logo}
+  alt="Trupy Logo"
+  className="w-5 h-5 object-contain"
+/>
 </div>
 
       </div>

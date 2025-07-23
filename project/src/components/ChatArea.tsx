@@ -1,5 +1,7 @@
 import React from 'react';
 import ChatMessage from './ChatMessage';
+import trupyImg from '../img/Trupy_1_preview_rev_1.png';
+
 
 interface Message {
   id: number;
@@ -17,8 +19,8 @@ const ChatArea: React.FC<ChatAreaProps> = ({ messages }) => {
     <div className="flex-1 overflow-y-auto px-3 py-4 bg-white">
       {messages.length === 0 ? (
         <div className="text-center py-8">
-          <div className="w-10 h-10 mb-3">
-            <img src="project\src\img\Trupy_2.png" alt="Trupy Bot" className="w-full h-full object-contain" />
+          <div className="w-20 h-20 mb-3">
+            <img src={trupyImg} alt="Trupy Bot" className="w-full h-full object-contain" />
           </div>
           <h2 className="text-lg font-bold text-gray-800 mb-2">¡Hola! Soy Trupy</h2>
           <p className="text-gray-600 text-sm px-4 leading-relaxed">
