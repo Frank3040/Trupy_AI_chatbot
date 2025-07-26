@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import Header from './components/Header';
 import ChatArea from './components/ChatArea';
 import MessageInput from './components/MessageInput';
+import bgImage from './img/background.png'; // <-- Asegúrate de mover la imagen aquí
 
 interface Message {
   id: number;
@@ -30,7 +31,6 @@ function App() {
       "Es importante que sepas que tus sentimientos son válidos. ¿Cómo puedo ayudarte mejor?",
       "Aprecio tu confianza al compartir esto. ¿Hay algo específico que te preocupa más?",
     ];
-    
     return responses[Math.floor(Math.random() * responses.length)];
   };
 
@@ -53,7 +53,7 @@ function App() {
         timestamp: formatTime(new Date()),
       };
       setMessages(prev => [...prev, trupyMessage]);
-    }, 1000 + Math.random() * 2000); // Random delay between 1-3 seconds
+    }, 1000 + Math.random() * 2000);
   };
 
   // Auto-scroll to bottom when new messages are added
@@ -64,16 +64,20 @@ function App() {
   }, [messages]);
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
-      <div className="bg-white rounded-2xl shadow-lg w-full max-w-sm sm:w-[400px] h-[600px] flex flex-col overflow-hidden">
+    <div
+      className="flex items-center justify-center min-h-screen p-4"
+      style={{
+        backgroundImage: `url(${bgImage})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+      }}
+    >
+      + <div className="w-full max-w-lg md:max-w-2xl h-[90vh] bg-white/80 backdrop-blur-lg rounded-2xl shadow-lg flex flex-col overflow-hidden relative min-h-0">
         <Header />
-        <div 
-          ref={chatAreaRef}
-          className="flex-1 overflow-y-auto"
-        >
-          <ChatArea messages={messages} />
+        <ChatArea />
+        <div className="p-4 border-t">
         </div>
-        <MessageInput onSendMessage={handleSendMessage} />
       </div>
     </div>
   );

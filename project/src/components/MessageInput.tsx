@@ -1,42 +1,28 @@
-import React, { useState } from 'react';
-import { Send } from 'lucide-react';
+import { useState } from "react";
 
-interface MessageInputProps {
-  onSendMessage: (message: string) => void;
-}
-
-const MessageInput: React.FC<MessageInputProps> = ({ onSendMessage }) => {
-  const [message, setMessage] = useState('');
+const MessageInput = ({ onSend }: { onSend: (text: string) => void }) => {
+  const [input, setInput] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (message.trim()) {
-      onSendMessage(message.trim());
-      setMessage('');
-    }
+    if (!input.trim()) return;
+    onSend(input.trim());
+    setInput("");
   };
 
   return (
-    <div className="bg-white border-t border-gray-100 p-3">
-      <form onSubmit={handleSubmit} className="flex items-center space-x-2">
-        <div className="flex-1 relative">
-          <input
-            type="text"
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            placeholder="Describe tu situación emocional"
-            className="w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-full focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent text-sm"
-          />
-        </div>
-        <button
-          type="submit"
-          disabled={!message.trim()}
-          className="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full shadow-md hover:shadow-lg transition-all duration-200 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 flex items-center justify-center"
-        >
-          <Send className="w-4 h-4" />
-        </button>
-      </form>
-    </div>
+    <form onSubmit={handleSubmit} className="flex gap-2">
+      <input
+        type="text"
+        className="flex-1 rounded-lg border px-1 py-2" //ancho de la bandeja de mensajes.
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+        placeholder="Describe tu situación emocional"
+      />
+      <button type="submit" className="bg-purple-500 text-white px-1 py-2 rounded-lg">
+        Enviar
+      </button>
+    </form>
   );
 };
 

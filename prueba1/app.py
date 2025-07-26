@@ -1,23 +1,19 @@
-from flask import Flask, render_template, request, session, redirect, url_for
+from flask import Flask, request, jsonify
+from flask_cors import CORS
 
 app = Flask(__name__)
-app.secret_key = 'secreto-super-seguro'
+CORS(app)  # Permite que el frontend (puerto 5173) pueda llamar a la API
 
-@app.route("/", methods=["GET", "POST"])
-def index():
-    if "messages" not in session:
-        session["messages"] = []
+@app.route("/api/chat", methods=["POST"])
+def chat():
+    data = request.get_json()
+    user_message = data.get("message", "")
+    bot_response = f"Es importante que sepas que tus sentimientos son válidos. ¿Cómo puedo ayudarte mejor?"  # Lógica actual
 
-    if request.method == "POST":
-        user_message = request.form["message"]
-        bot_response = user_message  # el bot repite el mensaje
-
-        session["messages"].append({"sender": "Tú", "text": user_message})
-        session["messages"].append({"sender": "Bot", "text": bot_response})
-        session.modified = True
-        return redirect(url_for("index"))
-
-    return render_template("index.html", messages=session["messages"])
+    return jsonify({
+        "user": user_message,
+        "bot": bot_response
+    })
 
 if __name__ == "__main__":
     app.run(debug=True)
