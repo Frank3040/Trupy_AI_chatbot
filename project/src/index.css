@@ -1,3 +1,47 @@
+/* 1. Inyecta los estilos base de Tailwind */
 @tailwind base;
+
+/* 2. Tus componentes predefinidos (botones, tarjetas, etc.) */
 @tailwind components;
+
+/* 3. Utilidades Tailwind */
 @tailwind utilities;
+
+/* ------------------------------------------------------------------
+   🎨  Estilos globales y utilidades personalizadas
+   Añade aquí reglas que necesites en todo el proyecto.
+------------------------------------------------------------------- */
+
+/* Fondo global opcional: usa tu imagen (puedes quitarlo si no lo quieres global) */
+body {
+  margin: 0;
+  @apply min-h-screen bg-cover bg-center bg-no-repeat;
+  background: url('/src/assets/img/background.png') no-repeat center center fixed;
+  background-size: cover;
+}
+
+/* Clase base para nuestros botones primarios */
+.btn {
+  @apply inline-block font-medium tracking-wide rounded-lg transition
+          focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-500;
+}
+
+/* Variantes de botón */
+.btn-primary {
+  @apply btn bg-purple-600 text-white hover:bg-purple-700;
+}
+
+.btn-secondary {
+  @apply btn bg-gray-100 hover:bg-gray-200 text-gray-800;
+}
+
+/* Ocultar scrollbars (sólo estética) en navegadores basados en WebKit */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 rounded-full;
+}
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-400;
+}

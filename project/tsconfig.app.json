@@ -1,24 +1,16 @@
+
 {
+  // Configuración específica de la aplicación (extiende tsconfig.json)
+  "extends": "./tsconfig.json",
+
   "compilerOptions": {
-    "target": "ES2020",
-    "useDefineForClassFields": true,
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
-    "module": "ESNext",
-    "skipLibCheck": true,
+    /* Carpeta de salida para el build de Vite */
+    "outDir": "dist",
 
-    /* Bundler mode */
-    "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
-    "isolatedModules": true,
-    "moduleDetection": "force",
-    "noEmit": true,
-    "jsx": "react-jsx",
-
-    /* Linting */
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    /* Tipos globales que aporta Vite (import.meta.env, etc.) */
+    "types": ["vite/client"]
   },
+
+  /* Solo incluimos el código fuente de la app */
   "include": ["src"]
 }

@@ -1,7 +1,35 @@
 {
-  "files": [],
+  // Archivo base de configuración TypeScript para Vite + React
+  "compilerOptions": {
+    /* 🔹 BÁSICOS */
+    "target": "ES2020",
+    "lib": ["DOM", "DOM.Iterable", "ES2020"],
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "jsx": "react-jsx",
+    "composite": true,
+
+    /* 🔹 ESTRICTO Y CALIDAD */
+    "strict": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+
+    /* 🔹 MAPAS DE RUTA (alias "@") */
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    },
+
+    /* 🔹 SALIDA */
+    "allowJs": false,
+    "resolveJsonModule": true,
+    "isolatedModules": true
+  },
+  "include": ["src"],
   "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
+  { "path": "./tsconfig.app.json" }
   ]
 }

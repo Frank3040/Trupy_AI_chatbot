@@ -1,0 +1,35 @@
+# --- Entorno local (Python, virtualenv) ---
+entorno/
+.venv/
+venv/
+
+# --- Carpetas que no van al repo ---
+prueba1/
+
+# --- Node/Vite dentro de project ---
+project/node_modules/
+project/dist/
+project/dist-ssr/
+project/.vite/
+project/.cache/
+
+# --- Logs ---
+project/npm-debug.log*
+project/yarn-debug.log*
+project/pnpm-debug.log*
+project/*.log
+
+# --- IDE ---
+project/.vscode/
+project/.idea/
+
+# --- Env ---
+project/.env*
+!project/.env.example
+
+# --- TypeScript ---
+project/*.tsbuildinfo
+
+# --- Coverage/Lint ---
+project/coverage/
+project/.eslintcache
